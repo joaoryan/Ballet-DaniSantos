@@ -1,0 +1,22 @@
+[
+  {
+    "nome": "Baby Class",
+    "idade": "4 a 6 anos",
+    "nivel": "Iniciante",
+    "professora": "Ana Souza",
+    "horarios": [
+      "Terça 18h-19h",
+      "Quinta 18h-19h"
+    ]
+  },
+  {
+    "nome": "Ballet Intermediário",
+    "idade": "7 a 10 anos",
+    "nivel": "Intermediário",
+    "professora": "Maria Lima",
+    "horarios": [
+      "Segunda 19h-20h",
+      "Quarta 19h-20h"
+    ]
+  }
+]
