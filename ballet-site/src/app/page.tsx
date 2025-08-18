@@ -1,7 +1,7 @@
 // pages/index.tsx
 "use client";
 import Image from "next/image";
-import imgHero from "../assets/image/img3.jpg";
+import imgHero from "../assets/image/image.png";
 import HorarioCard from "../components/HorarioCard";
 import turmas from "../data/turmas.json";
 import Header from "@/components/header";
@@ -144,6 +144,64 @@ export default function Home() {
           Explorar Galeria
         </a>
       </motion.section>
+      <motion.section
+        id="feedback"
+        className="w-full py-16 bg-pink-50 flex flex-col items-center text-center overflow-hidden"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl font-bold text-pink-700 mb-12">
+          O que Nossos Alunos Dizem
+        </h2>
+
+        <div className="relative w-full max-w-5xl py-5 overflow-hidden">
+          <motion.div
+            className="flex gap-6"
+            animate={{ x: ["0%", "-100%"] }} // movimenta horizontalmente
+            transition={{
+              duration: 60, // muito lento
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {[
+              "Minha filha adora as aulas! Aprendeu disciplina e se divertiu muito. - Mariana S.",
+              "Ótima metodologia e professores incríveis! Recomendo. - Ana P.",
+              "Ambiente acolhedor e muita dedicação. Minha filha está encantada! - Carla R.",
+              "Sempre uma experiência encantadora. O ballet mudou nossa rotina para melhor! - Luiza M.",
+            ].map((feedback, i) => (
+              <motion.div
+                key={i}
+                className="flex-shrink-0 bg-white rounded-2xl shadow-lg p-8 w-80 h-48 text-gray-700 flex items-center justify-center text-left cursor-pointer"
+                whileHover={{ scale: 1.05, y: -5 }} // leve zoom e levanta sutilmente
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {feedback}
+              </motion.div>
+            ))}
+
+            {/* Repetir os feedbacks para loop infinito */}
+            {[
+              "Minha filha adora as aulas! Aprendeu disciplina e se divertiu muito. - Mariana S.",
+              "Ótima metodologia e professores incríveis! Recomendo. - Ana P.",
+              "Ambiente acolhedor e muita dedicação. Minha filha está encantada! - Carla R.",
+              "Sempre uma experiência encantadora. O ballet mudou nossa rotina para melhor! - Luiza M.",
+            ].map((feedback, i) => (
+              <motion.div
+                key={`dup-${i}`}
+                className="flex-shrink-0 bg-white rounded-2xl shadow-lg p-8 w-80 h-48 text-gray-700 flex items-center justify-center text-left cursor-pointer"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {feedback}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
 
       <section id="contato" className="w-full bg-pink-50 ">
         <div className="w-full bg-pink-100 py-16 px-6 rounded-t-[3rem]">
@@ -176,9 +234,9 @@ export default function Home() {
           />
         </div>
       </section>
-      <div className="bottom-0 left-0 w-full h-10 bg-gradient-to-t from-pink-300 to-pink-100 " />
 
-      <footer className="w-full bg-pink-300 text-white py-1 text-center">
+
+      <footer className="w-full bg-pink-100 text-gray-600 py-1 text-center">
         <p>© {new Date().getFullYear()} Ballet Dani Santos - Todos os direitos reservados</p>
       </footer>
     </div>
