@@ -14,8 +14,30 @@ export async function GET() {
   }
 
   // Monta URLs ou Base64
-  const arquivos = await Promise.all(
-    data.files.map(async (file: any) => {
+  interface GoogleDriveFile {
+    id: string;
+    name: string;
+    mimeType: string;
+  }
+
+  interface ArquivoFoto {
+    id: string;
+    nome: string;
+    url: string;
+    tipo: "foto";
+  }
+
+  interface ArquivoVideo {
+    id: string;
+    nome: string;
+    url: string;
+    tipo: "video";
+  }
+
+  type Arquivo = ArquivoFoto | ArquivoVideo;
+
+  const arquivos: Arquivo[] = await Promise.all(
+    data.files.map(async (file: GoogleDriveFile): Promise<Arquivo> => {
       if (file.mimeType.includes("video")) {
         // Vídeo: mantemos link de preview
         return {
